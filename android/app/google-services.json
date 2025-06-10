@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "638658007004",
+    "project_id": "first-project-ca9e5",
+    "storage_bucket": "first-project-ca9e5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638658007004:android:a1895d41fdf365155ac919",
+        "android_client_info": {
+          "package_name": "com.example.login_foam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpQMejGGWP5fKTmBM17rS3473G0O1ClQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
