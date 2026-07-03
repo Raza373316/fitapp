@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:login_foam/assigmentwidget/confirm_password_widget.dart';
-import 'package:login_foam/my_main_screen/choose.dart';
-
 import 'package:login_foam/textfeild/signup.dart';
-import 'package:login_foam/my_main_screen/choose.dart';
+import '../screens/main_navigation_screen.dart';
 import '../utils/util.dart';
 
 class myAppScreen extends StatefulWidget {
@@ -128,7 +126,7 @@ class _myAppScreenState extends State<myAppScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Chosescreen()));
+                                    builder: (context) => MainNavigationScreen()));
                           })
                               .onError((error,stacktrack){
                             utils().toastmassage(error.toString());

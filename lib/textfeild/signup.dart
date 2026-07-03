@@ -4,7 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:login_foam/assigmentwidget/confirm_password_widget.dart';
-import 'package:login_foam/my_main_screen/choose.dart';
+import 'package:login_foam/screens/main_navigation_screen.dart';
+
 
 import 'package:login_foam/textfeild/login.dart';
 import 'package:login_foam/utils/util.dart';
@@ -254,7 +255,7 @@ class _SignUpScreensState extends State<SignUpScreens> {
         
                             // 4. Navigate after success
                             Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => Chosescreen()));
+                                MaterialPageRoute(builder: (context) => MainNavigationScreen()));
                           } catch (error) {
                             utils().toastmassage(error.toString());
                           }

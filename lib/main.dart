@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:login_foam/assigmentwidget/splash.dart';
 
-import 'my_main_screen/choose.dart';
+
 
 const firebaseOptions = FirebaseOptions(
   apiKey: "AIzaSyAfbY3LSkmostNFBJgtI4JmjELWDtdPfqM",

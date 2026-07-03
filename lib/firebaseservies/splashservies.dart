@@ -2,10 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:login_foam/my_main_screen/choose.dart';
 
 
 import 'package:login_foam/textfeild/signup.dart';
+
+import '../screens/main_navigation_screen.dart';
 
 class splashservies {
   void islogin(BuildContext context) {
@@ -15,7 +16,7 @@ class splashservies {
       Timer(
           Duration(seconds: 3),
           () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Chosescreen())));
+              MaterialPageRoute(builder: (context) => MainNavigationScreen())));
     } else {
       Timer(
         Duration(seconds: 3),
