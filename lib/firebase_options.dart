@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '638658007004',
     projectId: 'first-project-ca9e5',
     storageBucket: 'first-project-ca9e5.firebasestorage.app',
-    iosBundleId: 'com.example.loginFoam',
+    iosBundleId: 'com.example.fitness_app',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -74,7 +74,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '638658007004',
     projectId: 'first-project-ca9e5',
     storageBucket: 'first-project-ca9e5.firebasestorage.app',
-    iosBundleId: 'com.example.loginFoam',
+    iosBundleId: 'com.example.fitness_app',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

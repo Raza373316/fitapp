@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
-import '../models/category_model.dart';
-import '../models/exercise_model.dart';
+
+import 'models/category_model.dart';
+import 'models/exercise_model.dart';
 
 class DummyData {
   DummyData._();
