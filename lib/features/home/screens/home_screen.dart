@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_shadows.dart';
 import '../../../core/widgets/category_card.dart';
@@ -9,11 +10,11 @@ import '../../../core/widgets/momentum_stat_card.dart';
 import '../../../core/widgets/section_header.dart';
 import '../../../data/dummy_data.dart';
 import '../../favorites/providers/favorites_providers.dart';
+import '../../profile/provider/userprofileprovider.dart';
 import '../../workouts/providers/workout_providers.dart';
 import '../../workouts/screens/exercise_detail_screen.dart';
 import '../../workouts/screens/exercise_list_screen.dart';
 import '../../workouts/screens/workout_categories_screen.dart';
-
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -22,12 +23,18 @@ class HomeScreen extends ConsumerWidget {
     final categories = ref.watch(homeCategoriesProvider);
     final popular = ref.watch(popularExercisesProvider);
     final favoriteIds = ref.watch(favoriteIdsProvider);
+    final profileAsync = ref.watch(userProfileProvider);
+    final name = profileAsync.when(
+      data: (user) => user?.name ?? 'there',
+      loading: () => '...',
+      error: (_, __) => 'there',
+    );
 
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 100),
         children: [
-          _greeting(),
+          _greeting(name),
           const SizedBox(height: 24),
           const CustomText("Today's Progress", variant: CustomTextVariant.h2),
           const SizedBox(height: 12),
@@ -52,7 +59,11 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _greeting() {
+  Widget _greeting(String name) {
+    final initials = name.trim().isEmpty || name == 'there' || name == '...'
+        ? '?'
+        : name.trim().split(RegExp(r'\s+')).take(2).map((w) => w[0].toUpperCase()).join();
+
     return Row(
       children: [
         Container(
@@ -64,17 +75,17 @@ class HomeScreen extends ConsumerWidget {
             boxShadow: AppShadows.glow(AppColors.primary),
           ),
           alignment: Alignment.center,
-          child: const Text('MR',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
+          child: Text(initials,
+              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
         ),
         const SizedBox(width: 14),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              CustomText('Good Morning 👋', variant: CustomTextVariant.bodyMuted),
-              SizedBox(height: 2),
-              CustomText('Muhammad Raza', variant: CustomTextVariant.h1),
+            children: [
+              const CustomText('Good Morning 👋', variant: CustomTextVariant.bodyMuted),
+              const SizedBox(height: 2),
+              CustomText(name, variant: CustomTextVariant.h1, maxLines: 1),
             ],
           ),
         ),
@@ -106,7 +117,7 @@ class HomeScreen extends ConsumerWidget {
       crossAxisSpacing: 12,
       mainAxisSpacing: 12,
       childAspectRatio: 1.5,
-      children: const [
+      children: [
         MomentumStatCard(
           label: 'CALORIES',
           value: '420',
@@ -136,7 +147,7 @@ class HomeScreen extends ConsumerWidget {
           value: '32',
           unit: 'min',
           progress: 0.53,
-          color: Color(0xFFB98CFF),
+          color: const Color(0xFFB98CFF),
           icon: Icons.timer_outlined,
         ),
       ],
